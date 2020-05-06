@@ -9,6 +9,8 @@
   },
   "scripts": {
     "start": "node server/index.js",
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install",
     "backend": "nodemon server/index.js",
     "frontend": "npm run front --prefix client",
     "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
