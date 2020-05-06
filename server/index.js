@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const cors = require('cors')
+const cors = require('cors');
+const proxy = require('http-proxy-middleware');
 
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -27,8 +28,11 @@ app.use(cookieParser());
 
 app.use('/api/users', require('./routes/users'));
 app.use('/api/product', require('./routes/product'));
-
-
+  // add other server routes to path array
+module.exports = function(app) {
+      // add other server routes to path array
+      app.use(proxy(['/api' ], { target: 'https://gallery-eshop.herokuapp.com' }));
+  } 
 //use this to show the image you have in node js server to client (react js)
 //https://stackoverflow.com/questions/48914987/send-image-path-from-node-js-express-server-to-react-client
 app.use('/uploads', express.static('uploads'));
