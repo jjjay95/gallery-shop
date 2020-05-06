@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 
 function RightMenu(props) {
   const user = useSelector(state => state.user)
+  axios.defaults.withCredentials = true
 
   const logoutHandler = () => {
     axios.get(`${USER_SERVER}/logout`).then(response => {

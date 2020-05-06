@@ -16,6 +16,7 @@ function LandingPage() {
     const [Limit, setLimit] = useState(8)
     const [PostSize, setPostSize] = useState()
     const [SearchTerms, setSearchTerms] = useState("")
+    Axios.defaults.withCredentials = true
 
     const [Filters, setFilters] = useState({
         continents: [],
@@ -31,7 +32,7 @@ function LandingPage() {
 
         getProducts(variables)
 
-    }, [])
+    }, [Limit, Skip, getProducts])
 
     const getProducts = (variables) => {
         Axios.post('/api/product/getProducts', variables)

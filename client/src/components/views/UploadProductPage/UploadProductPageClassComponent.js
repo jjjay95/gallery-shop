@@ -65,6 +65,7 @@ export class UploadProductPage extends Component {
             price: this.state.price
         }
 
+        axios.defaults.withCredentials = true;
         axios.post('/api/product/uploadProduct', variables)
             .then(response => {
                 if (response.data.success) {

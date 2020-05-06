@@ -7,8 +7,9 @@ import { addToCart } from '../../../_actions/user_actions';
 import { useDispatch } from 'react-redux';
 function DetailProductPage(props) {
     const dispatch = useDispatch();
-    const productId = props.match.params.productId
-    const [Product, setProduct] = useState([])
+    const productId = props.match.params.productId;
+    const [Product, setProduct] = useState([]);
+    Axios.defaults.withCredentials = true
 
     useEffect(() => {
         Axios.get(`/api/product/products_by_id?id=${productId}&type=single`)
@@ -16,7 +17,7 @@ function DetailProductPage(props) {
                 setProduct(response.data[0])
             })
 
-    }, [])
+    }, [productId])
 
     const addToCartHandler = (productId) => {
         dispatch(addToCart(productId))

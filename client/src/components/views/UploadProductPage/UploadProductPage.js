@@ -22,6 +22,7 @@ function UploadProductPage(props) {
     const [DescriptionValue, setDescriptionValue] = useState("")
     const [PriceValue, setPriceValue] = useState(0)
     const [ContinentValue, setContinentValue] = useState(1)
+    Axios.defaults.withCredentials = true
 
     const [Images, setImages] = useState([])
 

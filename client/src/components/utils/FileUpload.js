@@ -5,6 +5,7 @@ import Axios from 'axios';
 function FileUpload(props) {
 
     const [Images, setImages] = useState([])
+    Axios.defaults.withCredentials = true
 
     const onDrop = (files) => {
 
